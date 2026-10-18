@@ -1,0 +1,51 @@
+:root {
+  /* Lighter crimson for small text so it keeps >4.5:1 contrast on the dark veil. */
+  --crimson-text: #ff4d6a;
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  background: #050204;
+}
+
+/* Page content sits above the fixed portrait background. */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Later sections: keep anchors clear of the fixed nav. */
+section[id]:not(#home) {
+  scroll-margin-top: 4.5rem;
+}
+
+/* Keyboard users: jump past the fixed navigation. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #050204;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}

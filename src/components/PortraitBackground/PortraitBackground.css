@@ -1,0 +1,81 @@
+/* Fixed to the viewport, behind all content, never intercepts input. */
+.pbg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Largest viewport height: stays constant when mobile browser bars show/hide, so the canvas is not resized mid-scroll. */
+  height: 100vh;
+  height: 100lvh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #050204;
+}
+
+.pbg__poster,
+.pbg__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pbg__poster {
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.pbg__canvas {
+  opacity: 0;
+}
+.pbg__canvas[data-ready="true"] {
+  opacity: 1;
+}
+
+/*
+ * Global dark overlay. These are the Hero's original layers (edge falloff,
+ * crimson/burgundy glow, dark scrim), moved here unchanged so the same
+ * treatment covers the entire page. Fixed to the viewport, so it looks
+ * identical at every scroll position; sections paint no backgrounds of their own.
+ */
+.pbg-veil {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  z-index: 0; /* after .pbg in the DOM, so it paints above the portrait; page content is z-index 1 */
+  overflow: hidden;
+  pointer-events: none;
+}
+.pbg-veil__tint,
+.pbg-veil__glow,
+.pbg-veil__scrim {
+  position: absolute;
+  inset: 0;
+}
+.pbg-veil__tint {
+  background: radial-gradient(130% 95% at 50% 40%, rgba(5, 2, 4, 0) 45%, rgba(5, 2, 4, 0.6) 100%);
+}
+.pbg-veil__glow {
+  opacity: 0.55;
+  background:
+    radial-gradient(60% 70% at 100% 100%, rgba(229, 23, 63, 0.3), transparent 62%),
+    radial-gradient(45% 55% at 0% 100%, rgba(140, 20, 110, 0.3), transparent 64%),
+    radial-gradient(70% 40% at 50% 0%, rgba(91, 15, 38, 0.4), transparent 70%);
+}
+.pbg-veil__scrim {
+  background:
+    linear-gradient(90deg, rgba(5, 2, 4, 0.8) 0%, rgba(5, 2, 4, 0.5) 36%, rgba(5, 2, 4, 0) 66%),
+    linear-gradient(0deg, rgba(5, 2, 4, 0.92) 0%, rgba(5, 2, 4, 0) 30%),
+    linear-gradient(180deg, rgba(5, 2, 4, 0.45) 0%, rgba(5, 2, 4, 0) 18%);
+}
+@media (max-width: 820px) {
+  .pbg-veil__scrim {
+    background:
+      linear-gradient(0deg, rgba(5, 2, 4, 0.94) 0%, rgba(5, 2, 4, 0.72) 48%, rgba(5, 2, 4, 0) 80%),
+      linear-gradient(180deg, rgba(5, 2, 4, 0.5) 0%, rgba(5, 2, 4, 0) 16%);
+  }
+}

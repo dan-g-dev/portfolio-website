@@ -1,0 +1,280 @@
+.about {
+  --crimson: #e5173f;
+  --magenta: #d4147a;
+  position: relative;
+  overflow: clip; /* clip (not hidden) so the sticky label can stick */
+  padding: clamp(5rem, 13vw, 11rem) 0;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+
+.about__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.26fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 4rem);
+}
+
+.about__meta {
+  position: sticky;
+  top: 6rem;
+  align-self: start;
+}
+
+.about__label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson-text);
+}
+.about__label::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.about__who {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+.about__who strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.about__body {
+  display: grid;
+  gap: clamp(4rem, 9vw, 8rem);
+  min-width: 0;
+}
+
+.about__title {
+  max-width: 20ch;
+  margin: 0;
+  font-size: clamp(2.1rem, 5.4vw, 5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.about__title em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--crimson), var(--magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.about__lead {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.9vw, 1.65rem);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.about__intro {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+}
+/* Same look as the "Email Me" button in the Contact section. */
+.about__cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(100deg, var(--crimson), var(--magenta));
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.about__cv:hover {
+  transform: translateY(-2px);
+}
+.about__cv:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about__cv {
+    transition: none;
+  }
+  .about__cv:hover {
+    transform: none;
+  }
+}
+
+.about__text {
+  margin: 0;
+  max-width: 38rem;
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.about__kicker {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.about__stack .about__text {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* Frontend - Backend - Databases, joined by a thin gradient line. */
+.stack {
+  --gap: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stack__node {
+  position: relative;
+  flex: 1;
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+}
+.stack__node:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: var(--gap);
+  height: 1px;
+  background: linear-gradient(90deg, var(--crimson), var(--magenta));
+}
+.stack__name {
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.stack__note {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.about__pledge {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.about__pledge-line {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(1.7rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.more {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem clamp(1.5rem, 4vw, 4rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.more li {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(180deg, var(--crimson), var(--magenta)) 1;
+}
+.more__name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.more__note {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+.about__fine {
+  margin: 1.5rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Reveal: only hidden once JS has armed it, and never under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s);
+  }
+  .reveal-ready [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .about__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .about__meta {
+    position: static;
+  }
+  .about__cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .stack {
+    --gap: 1.75rem;
+    flex-direction: column;
+  }
+  .stack__node:not(:last-child)::after {
+    top: 100%;
+    left: 2rem;
+    width: 1px;
+    height: var(--gap);
+    background: linear-gradient(180deg, var(--crimson), var(--magenta));
+  }
+  .more {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

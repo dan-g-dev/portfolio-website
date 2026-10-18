@@ -1,0 +1,283 @@
+.journey {
+  --crimson: #e5173f;
+  --magenta: #d4147a;
+  position: relative;
+  overflow: clip;
+  padding: clamp(5rem, 12vw, 10rem) 0;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+.journey__inner {
+  position: relative;
+  display: grid;
+  gap: clamp(4rem, 9vw, 8rem);
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 4rem);
+}
+
+.journey__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-areas: "label label" "title intro";
+  align-items: end;
+  gap: 1.5rem clamp(2rem, 6vw, 6rem);
+}
+.journey__label {
+  grid-area: label;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson-text);
+}
+.journey__label::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+.journey__title {
+  grid-area: title;
+  margin: 0;
+  font-size: clamp(2.4rem, 6.4vw, 6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+.journey__title em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--crimson), var(--magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.journey__intro {
+  grid-area: intro;
+  margin: 0;
+  max-width: 28rem;
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.journey__kicker {
+  margin: 0 0 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Education */
+.edu {
+  padding-top: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.edu__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2rem clamp(2rem, 6vw, 6rem);
+  align-items: end;
+}
+.edu__school {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.edu__facts {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+}
+.edu__facts div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(180deg, var(--crimson), var(--magenta)) 1;
+}
+.edu__facts dt {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  align-self: center;
+}
+.edu__facts dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Learning journey: meta | spine | content */
+.steps {
+  --step-gap: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  gap: var(--step-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.step {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.3fr) 1.5rem minmax(0, 1fr);
+  column-gap: clamp(1rem, 3vw, 3rem);
+  align-items: start;
+}
+.step__meta {
+  padding-top: 0.15rem;
+}
+.step__when {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.step__kind {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Rail: a dot at the top and a thin line running to the next step. */
+.step__dot {
+  position: relative;
+  align-self: stretch;
+}
+.step__dot::before {
+  content: "";
+  position: absolute;
+  top: 0.35rem;
+  left: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-left: -0.425rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--crimson), var(--magenta));
+  z-index: 1;
+  transition: opacity 0.6s, transform 0.6s;
+}
+.step:not(:last-child) .step__dot::after {
+  content: "";
+  position: absolute;
+  top: 1.4rem;
+  bottom: calc(var(--step-gap) * -1);
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(229, 23, 63, 0.55), rgba(212, 20, 122, 0.15));
+}
+
+.step__org {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.step__title {
+  margin: 0.6rem 0 0;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.86);
+}
+.step__summary {
+  max-width: 38rem;
+  margin: 1.1rem 0 0;
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+.step__list {
+  margin-top: 1.5rem;
+}
+.step__list-label {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.step__list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.step__list li {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Dots light up as each step enters; always lit when motion is reduced. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .step:not(.is-in) .step__dot::before {
+    opacity: 0.25;
+    transform: scale(0.6);
+  }
+  .reveal-ready .journey__head[data-reveal],
+  .reveal-ready .edu[data-reveal],
+  .reveal-ready .step[data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal-ready .journey__head[data-reveal].is-in,
+  .reveal-ready .edu[data-reveal].is-in,
+  .reveal-ready .step[data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .journey__head,
+  .edu__row {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: none;
+  }
+  .journey__head {
+    grid-template-areas: "label" "title" "intro";
+  }
+  .step {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    column-gap: 1rem;
+    grid-template-areas:
+      "dot meta"
+      "dot body";
+    row-gap: 0.6rem;
+  }
+  .step__dot {
+    grid-area: dot;
+  }
+  .step__meta {
+    grid-area: meta;
+  }
+  .step__body {
+    grid-area: body;
+  }
+}
+@media (max-width: 480px) {
+  .edu__facts div {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+}

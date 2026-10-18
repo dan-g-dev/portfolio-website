@@ -1,0 +1,121 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1rem, 2.6svh, 1.5rem) clamp(1.25rem, 4vw, 4rem);
+  color: #fff;
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -2.5rem;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(5, 2, 4, 0.78), rgba(5, 2, 4, 0));
+  pointer-events: none;
+}
+
+.nav__brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav__links ul {
+  display: flex;
+  gap: clamp(1.25rem, 2.6vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0.25rem 0;
+  font: inherit;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+a.nav__link[aria-current="true"] {
+  color: #fff;
+  box-shadow: 0 2px 0 -0.5px #e5173f;
+}
+
+a.nav__link:hover,
+a.nav__link:focus-visible {
+  color: #fff;
+}
+
+.nav__link.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nav__toggle {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  .nav__toggle {
+    display: grid;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    place-content: center;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .nav__toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.25s;
+  }
+  .nav__toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 0.5rem clamp(1.25rem, 4vw, 4rem) 1.25rem;
+    background: rgba(5, 2, 4, 0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .nav__links.is-open {
+    display: block;
+  }
+  .nav__links ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav__link {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 0;
+    font-size: 1.05rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+}
